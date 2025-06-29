@@ -50,10 +50,10 @@ Scrapes Docker containers for `traefik.http.routers.*.rule` labels and updates P
 ```
 
 > ⚠️ Replace the following placeholders in the script before running:
-> `pihole_password_file="/path/to/pihole/api/password/file"`
-> `pihole_address="pihole.domain.com"`
-> `pihole_port=443`
-> `pihole_protocol="https"`
+> - `pihole_password_file="/path/to/pihole/api/password/file"`
+> - `pihole_address="pihole.domain.com"`
+> - `pihole_port=443`
+> - `pihole_protocol="https"`
 
 ---
 
@@ -71,8 +71,8 @@ Fetches a full Teleporter backup of your Pi-hole v6 configuration.
 ```
 
 > ⚠️ Replace the following placeholders in the script before running:
-> `backup_directory="/path/to/pihole/backups"`
-> `pihole_password_file="/path/to/pihole/api/password/file"`
+> - `backup_directory="/path/to/pihole/backups"`
+> - `pihole_password_file="/path/to/pihole/api/password/file"`
 
 Backups are saved as:
 ```
