@@ -33,14 +33,15 @@ existing_hosts_json=$(curl -sS -X GET "$pihole_api_url/config/dns%2Fhosts" \
  | jq 'del(.took)')
 
 # Get hostnames from traefik docker labels and prepend IP
-docker_host_list=$(docker ps -q | while read -r cid; do
-  docker inspect "$cid" \
-    | jq -r '.[0].Config.Labels 
-        | to_entries[] 
-        | select(.key | test("^traefik\\.http\\.routers\\..*\\.rule$")) 
-        | .value' \
-    | grep -oP 'Host\(`\K[^`]+'
-done | sort -u | awk '{ print "'"$host_ip"'", $1 }')
+docker_host_list=$(
+  docker ps -q | xargs docker inspect --format '{{ json .Config.Labels }}' 2>/dev/null \
+  | jq -r 'to_entries[]? 
+      | select(.key | test("^traefik\\.http\\.routers\\..*\\.rule$")) 
+      | .value' \
+  | grep -oP 'Host\(`\K[^`]+' \
+  | sort -u \
+  | awk '{ print "'"$host_ip"'", $1 }'
+)
 
 # Update the JSON config
 updated_hosts_json="$existing_hosts_json"
