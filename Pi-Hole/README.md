@@ -2,8 +2,8 @@
 
 This repository contains Bash scripts to automate key tasks for managing a Pi-hole v6 instance:
 
-- **`pihole_v6_add_local_traefik_hosts.sh`** – Scrapes hostnames from Docker containers (Traefik labels) and syncs them to Pi-hole's DNS host configuration.
-- **`pihole_v6_backup.sh`** – Backs up the full Pi-hole v6 configuration using the built-in Teleporter API.
+- [**`pihole_v6_add_local_traefik_hosts.sh`**](#pihole_v6_add_local_traefik_hostssh) – Scrapes hostnames from Docker containers (Traefik labels) and syncs them to Pi-hole's DNS host configuration.
+- [**`pihole_v6_backup.sh`**](#pihole_v6_backupsh) – Backs up the full Pi-hole v6 configuration using the built-in Teleporter API.
 
 ## Requirements
 
